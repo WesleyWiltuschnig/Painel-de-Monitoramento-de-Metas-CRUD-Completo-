@@ -1,4 +1,4 @@
-// ── MAPA DE EMOJIS POR CATEGORIA ─────────────────────────────────────────────
+
 const emojiMap = {
   '🦁 Grandes Felinos'    : '🦁',
   '🐘 Elefantes'          : '🐘',
@@ -12,10 +12,8 @@ const emojiMap = {
   '💰 Arrecadação'        : '💰',
 };
 
-// ── BASE DE DADOS (array principal) ──────────────────────────────────────────
 let metas = [];
 
-// ── FORMATAR MOEDA ────────────────────────────────────────────────────────────
 function fmt(v) {
   return 'R$ ' + Number(v)
     .toFixed(2)
@@ -23,7 +21,6 @@ function fmt(v) {
     .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
-// ── CREATE / UPDATE ───────────────────────────────────────────────────────────
 function salvar() {
   const titulo       = document.getElementById('titulo').value.trim();
   const categoria    = document.getElementById('categoria').value;
@@ -31,7 +28,6 @@ function salvar() {
   const valAlcancado = Number(document.getElementById('valAlcancado').value);
   const idEdicao     = document.getElementById('metaId').value;
 
-  // Validação com if / else
   if (!titulo) {
     flash('⚠️ Informe o título da meta!');
     return;
@@ -46,11 +42,9 @@ function salvar() {
   }
 
   if (idEdicao) {
-    // UPDATE — localiza pelo ID e substitui os dados
     const idx = metas.findIndex(m => m.id == idEdicao);
     metas[idx] = { ...metas[idx], titulo, categoria, valAlvo, valAlcancado };
   } else {
-    // CREATE — cria objeto com ID único e adiciona na array
     const novaMeta = {
       id: Date.now(),
       titulo,
@@ -65,11 +59,9 @@ function salvar() {
   renderizar();
 }
 
-// ── READ — renderiza lista e recalcula dashboard ──────────────────────────────
 function renderizar() {
   const container = document.getElementById('listaMetas');
 
-  // Calcula totais percorrendo a array com for
   let somaAlvo = 0;
   let somaAlcancado = 0;
 
@@ -78,13 +70,11 @@ function renderizar() {
     somaAlcancado += metas[i].valAlcancado;
   }
 
-  // Atualiza os placares do dashboard
   document.getElementById('totalAlmejado').textContent  = fmt(somaAlvo);
   document.getElementById('totalAlcancado').textContent = fmt(somaAlcancado);
   document.getElementById('contador').textContent =
     metas.length + (metas.length === 1 ? ' meta' : ' metas');
 
-  // Estado vazio
   if (metas.length === 0) {
     container.innerHTML = `
       <div class="empty-state">
@@ -97,13 +87,11 @@ function renderizar() {
 
   container.innerHTML = '';
 
-  // Percorre a array e desenha cada card
   for (let i = 0; i < metas.length; i++) {
     const m        = metas[i];
     const pct      = Math.min((m.valAlcancado / m.valAlvo) * 100, 100);
     const restante = Math.max(m.valAlvo - m.valAlcancado, 0);
 
-    // Regra de negócio: define status e cor pelo if / else
     let status, badgeClass, cardClass;
 
     if (m.valAlcancado >= m.valAlvo) {
@@ -149,7 +137,6 @@ function renderizar() {
   }
 }
 
-// ── UPDATE — prepara o formulário para edição ─────────────────────────────────
 function prepararEdicao(id) {
   const m = metas.find(m => m.id === id);
 
@@ -165,14 +152,12 @@ function prepararEdicao(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── DELETE — remove pelo ID usando filter() ───────────────────────────────────
 function excluir(id) {
   if (!confirm('Tem certeza que deseja remover esta meta?')) return;
   metas = metas.filter(m => m.id !== id);
   renderizar();
 }
 
-// ── LIMPAR FORMULÁRIO ─────────────────────────────────────────────────────────
 function limpar() {
   document.getElementById('metaId').value       = '';
   document.getElementById('titulo').value       = '';
@@ -184,7 +169,6 @@ function limpar() {
   document.getElementById('btnCancelar').classList.add('oculto');
 }
 
-// ── NOTIFICAÇÃO FLASH ─────────────────────────────────────────────────────────
 function flash(msg) {
   const el = document.createElement('div');
   el.style.cssText = `
@@ -213,8 +197,6 @@ function flash(msg) {
   setTimeout(() => el.remove(), 2800);
 }
 
-// ── DADOS DE DEMONSTRAÇÃO ─────────────────────────────────────────────────────
-// Remova este bloco se quiser começar com a lista vazia.
 metas = [
   { id: 1, titulo: 'Campanha de vacinação — Leões e Tigres', categoria: '🦁 Grandes Felinos',    valAlvo: 8500,  valAlcancado: 9200  },
   { id: 2, titulo: 'Renovação do cercado dos elefantes',      categoria: '🐘 Elefantes',           valAlvo: 45000, valAlcancado: 28000 },
@@ -223,5 +205,4 @@ metas = [
   { id: 5, titulo: 'Fundo de conservação da onça-pintada',   categoria: '🌿 Conservação',         valAlvo: 30000, valAlcancado: 16500 },
 ];
 
-// Inicia a renderização ao carregar a página
 renderizar();

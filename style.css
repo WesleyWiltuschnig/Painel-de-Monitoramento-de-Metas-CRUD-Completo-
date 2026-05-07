@@ -1,4 +1,4 @@
-/* ── VARIÁVEIS ───────────────────────────────────── */
+
 :root {
   --jungle-dark:  #1a2e1a;
   --jungle-mid:   #2d4a2d;
@@ -15,14 +15,12 @@
   --border:       rgba(140, 198, 63, 0.18);
 }
 
-/* ── RESET ───────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ── BODY ────────────────────────────────────────── */
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: var(--jungle-dark);
@@ -31,7 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-/* fundo com gradientes de selva */
 body::before {
   content: '';
   position: fixed;
@@ -44,7 +41,6 @@ body::before {
   z-index: 0;
 }
 
-/* pegadas decorativas no rodapé */
 body::after {
   content: '🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾';
   position: fixed;
@@ -60,7 +56,6 @@ body::after {
   overflow: hidden;
 }
 
-/* ── WRAPPER ─────────────────────────────────────── */
 .wrap {
   position: relative;
   z-index: 1;
@@ -69,7 +64,6 @@ body::after {
   padding: 0 1.5rem 4rem;
 }
 
-/* ── HEADER ──────────────────────────────────────── */
 header {
   text-align: center;
   padding: 3.5rem 0 2rem;
@@ -109,7 +103,6 @@ header p {
   letter-spacing: .04em;
 }
 
-/* ── DASHBOARD ───────────────────────────────────── */
 .dashboard {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -157,7 +150,6 @@ header p {
 .placar-valor.almejado  { color: var(--amber); }
 .placar-valor.alcancado { color: var(--lime);  }
 
-/* ── FORMULÁRIO ──────────────────────────────────── */
 .form-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -228,7 +220,6 @@ header p {
   color: var(--text-light);
 }
 
-/* ── BOTÕES ──────────────────────────────────────── */
 .btn-group {
   display: flex;
   gap: .8rem;
@@ -264,7 +255,6 @@ header p {
 
 .oculto { display: none !important; }
 
-/* ── SEÇÃO LISTA ─────────────────────────────────── */
 .section-head {
   display: flex;
   align-items: center;
@@ -292,7 +282,6 @@ header p {
   font-weight: 600;
 }
 
-/* ── LISTA DE METAS ──────────────────────────────── */
 #listaMetas {
   display: flex;
   flex-direction: column;
@@ -354,7 +343,6 @@ header p {
   margin-bottom: .55rem;
 }
 
-/* barra de progresso */
 .prog-track {
   height: 6px;
   background: rgba(255, 255, 255, .1);
@@ -385,7 +373,6 @@ header p {
   font-weight: 600;
 }
 
-/* badge de status */
 .meta-badge {
   font-size: .7rem;
   font-weight: 700;
@@ -399,7 +386,6 @@ header p {
 .badge-pendente { background: rgba(240, 147, 58, .2); color: var(--amber); border: 1px solid rgba(240, 147, 58, .4); }
 .badge-critica  { background: rgba(224,  92, 58, .2); color: var(--red);   border: 1px solid rgba(224,  92, 58, .4); }
 
-/* botões de ação (editar / excluir) */
 .meta-acoes {
   display: flex;
   gap: .5rem;
@@ -425,7 +411,6 @@ header p {
 .btn-acao.editar:hover   { background: rgba(140, 198, 63, .15); border-color: var(--lime); color: var(--lime); }
 .btn-acao.excluir:hover  { background: rgba(224,  92, 58, .15); border-color: var(--red);  color: var(--red);  }
 
-/* ── ESTADO VAZIO ────────────────────────────────── */
 .empty-state {
   text-align: center;
   padding: 3.5rem 1rem;
@@ -445,7 +430,6 @@ header p {
   line-height: 1.6;
 }
 
-/* ── RESPONSIVO ──────────────────────────────────── */
 @media (max-width: 560px) {
   .dashboard       { grid-template-columns: 1fr; }
   .form-grid       { grid-template-columns: 1fr; }
