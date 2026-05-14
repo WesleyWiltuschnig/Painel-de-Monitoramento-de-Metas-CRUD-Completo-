@@ -1,15 +1,15 @@
 
 const emojiMap = {
-  '🦁 Grandes Felinos'    : '🦁',
-  '🐘 Elefantes'          : '🐘',
-  '🦒 Girafas & Herbívoros': '🦒',
-  '🐧 Aves & Aquáticos'   : '🐧',
-  '🐍 Répteis'            : '🐍',
-  '🦜 Primatas'           : '🦜',
-  '🌿 Conservação'        : '🌿',
-  '🏥 Veterinária'        : '🏥',
-  '🧑‍🤝‍🧑 Visitantes'         : '🧑‍🤝‍🧑',
-  '💰 Arrecadação'        : '💰',
+  ' Grandes Felinos'    : '',
+  ' Elefantes'          : '',
+  ' Girafas & Herbívoros': '',
+  ' Aves & Aquáticos'   : '',
+  ' Répteis'            : '',
+  ' Primatas'           : '',
+  ' Conservação'        : '',
+  ' Veterinária'        : '',
+  ' Visitantes'         : '',
+  ' Arrecadação'        : '',
 };
 
 let metas = [];
@@ -29,15 +29,15 @@ function salvar() {
   const idEdicao     = document.getElementById('metaId').value;
 
   if (!titulo) {
-    flash('⚠️ Informe o título da meta!');
+    flash('Informe o título da meta!');
     return;
   }
   if (valAlvo <= 0) {
-    flash('⚠️ O Valor Alvo deve ser maior que zero!');
+    flash('O Valor Alvo deve ser maior que zero!');
     return;
   }
   if (valAlcancado < 0) {
-    flash('⚠️ O Valor Alcançado não pode ser negativo!');
+    flash('O Valor Alcançado não pode ser negativo!');
     return;
   }
 
@@ -95,20 +95,20 @@ function renderizar() {
     let status, badgeClass, cardClass;
 
     if (m.valAlcancado >= m.valAlvo) {
-      status     = '✅ META BATIDA';
+      status     = 'META BATIDA';
       badgeClass = 'badge-batida';
       cardClass  = 'batida';
     } else if (pct >= 50) {
-      status     = '⏳ PENDENTE';
+      status     = 'PENDENTE';
       badgeClass = 'badge-pendente';
       cardClass  = 'pendente';
     } else {
-      status     = '🔴 CRÍTICO';
+      status     = 'CRÍTICO';
       badgeClass = 'badge-critica';
       cardClass  = 'critica';
     }
 
-    const emoji = emojiMap[m.categoria] || '🐾';
+    const emoji = emojiMap[m.categoria] || '●';
 
     const card = document.createElement('div');
     card.className = `meta-card ${cardClass}`;
@@ -146,7 +146,7 @@ function prepararEdicao(id) {
   document.getElementById('valAlvo').value      = m.valAlvo;
   document.getElementById('valAlcancado').value = m.valAlcancado;
 
-  document.getElementById('formTitulo').textContent = '✏️ Editando Meta';
+  document.getElementById('formTitulo').textContent = 'Editando Meta';
   document.getElementById('btnCancelar').classList.remove('oculto');
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -163,9 +163,9 @@ function limpar() {
   document.getElementById('titulo').value       = '';
   document.getElementById('valAlvo').value      = '';
   document.getElementById('valAlcancado').value = '';
-  document.getElementById('categoria').value    = '🦁 Grandes Felinos';
+  document.getElementById('categoria').value    = 'Grandes Felinos';
 
-  document.getElementById('formTitulo').textContent = '🌿 Nova Meta';
+  document.getElementById('formTitulo').textContent = ' Nova Meta';
   document.getElementById('btnCancelar').classList.add('oculto');
 }
 
@@ -198,11 +198,11 @@ function flash(msg) {
 }
 
 metas = [
-  { id: 1, titulo: 'Campanha de vacinação — Leões e Tigres', categoria: '🦁 Grandes Felinos',    valAlvo: 8500,  valAlcancado: 9200  },
-  { id: 2, titulo: 'Renovação do cercado dos elefantes',      categoria: '🐘 Elefantes',           valAlvo: 45000, valAlcancado: 28000 },
-  { id: 3, titulo: 'Reintrodução de araras azuis (lote 3)',   categoria: '🐧 Aves & Aquáticos',   valAlvo: 12000, valAlcancado: 5400  },
-  { id: 4, titulo: 'Meta de visitantes — Julho',              categoria: '🧑‍🤝‍🧑 Visitantes',        valAlvo: 15000, valAlcancado: 15800 },
-  { id: 5, titulo: 'Fundo de conservação da onça-pintada',   categoria: '🌿 Conservação',         valAlvo: 30000, valAlcancado: 16500 },
+  { id: 1, titulo: 'Campanha de vacinação — Leões e Tigres', categoria: 'Grandes Felinos',    valAlvo: 8500,  valAlcancado: 9200  },
+  { id: 2, titulo: 'Renovação do cercado dos elefantes',      categoria: 'Elefantes',           valAlvo: 45000, valAlcancado: 28000 },
+  { id: 3, titulo: 'Reintrodução de araras azuis (lote 3)',   categoria: 'Aves & Aquáticos',   valAlvo: 12000, valAlcancado: 5400  },
+  { id: 4, titulo: 'Meta de visitantes — Julho',              categoria: 'Visitantes',        valAlvo: 15000, valAlcancado: 15800 },
+  { id: 5, titulo: 'Fundo de conservação da onça-pintada',   categoria: 'Conservação',         valAlvo: 30000, valAlcancado: 16500 },
 ];
 
 renderizar();

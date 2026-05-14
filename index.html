@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🦁 ZooMetas — Painel de Monitoramento</title>
+  <title>ZooMetas — Painel de Monitoramento</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,24 +11,24 @@
 <div class="wrap">
 
   <header>
-    <span class="logo-icon">🦁</span>
+    <span class="logo-icon"></span>
     <h1>ZooMetas</h1>
     <p>Painel de Monitoramento de Metas — Zoológico Municipal</p>
   </header>
 
   <div class="dashboard">
     <div class="placar">
-      <div class="placar-label"><span>🎯</span> Total Almejado</div>
+      <div class="placar-label"><span></span> Total Almejado</div>
       <div class="placar-valor almejado" id="totalAlmejado">R$ 0,00</div>
     </div>
     <div class="placar">
-      <div class="placar-label"><span>✅</span> Total Alcançado</div>
+      <div class="placar-label"><span></span> Total Alcançado</div>
       <div class="placar-valor alcancado" id="totalAlcancado">R$ 0,00</div>
     </div>
   </div>
 
   <div class="form-card">
-    <div class="form-title" id="formTitulo">🌿 Nova Meta</div>
+    <div class="form-title" id="formTitulo"> Nova Meta</div>
     <input type="hidden" id="metaId">
 
     <div class="form-grid">
@@ -39,16 +39,16 @@
       <div class="field">
         <label>Categoria</label>
         <select id="categoria">
-          <option value="🦁 Grandes Felinos">🦁 Grandes Felinos</option>
-          <option value="🐘 Elefantes">🐘 Elefantes</option>
-          <option value="🦒 Girafas & Herbívoros">🦒 Girafas & Herbívoros</option>
-          <option value="🐧 Aves & Aquáticos">🐧 Aves & Aquáticos</option>
-          <option value="🐍 Répteis">🐍 Répteis</option>
-          <option value="🦜 Primatas">🦜 Primatas</option>
-          <option value="🌿 Conservação">🌿 Conservação</option>
-          <option value="🏥 Veterinária">🏥 Veterinária</option>
-          <option value="🧑‍🤝‍🧑 Visitantes">🧑‍🤝‍🧑 Visitantes</option>
-          <option value="💰 Arrecadação">💰 Arrecadação</option>
+          <option value=" Grandes Felinos"> Grandes Felinos</option>
+          <option value=" Elefantes"> Elefantes</option>
+          <option value=" Girafas & Herbívoros"> Girafas & Herbívoros</option>
+          <option value=" Aves & Aquáticos"> Aves & Aquáticos</option>
+          <option value=" Répteis"> Répteis</option>
+          <option value=" Primatas"> Primatas</option>
+          <option value=" Conservação"> Conservação</option>
+          <option value=" Veterinária"> Veterinária</option>
+          <option value=" Visitantes"> Visitantes</option>
+          <option value=" Arrecadação">Arrecadação</option>
         </select>
       </div>
       <div class="field">
@@ -62,13 +62,13 @@
     </div>
 
     <div class="btn-group">
-      <button class="btn btn-salvar" onclick="salvar()">💾 Salvar Meta</button>
+      <button class="btn btn-salvar" onclick="salvar()">Salvar Meta</button>
       <button class="btn btn-cancelar oculto" id="btnCancelar" onclick="limpar()">✕ Cancelar Edição</button>
     </div>
   </div>
 
   <div class="section-head">
-    <h2>🗂️ Metas Cadastradas</h2>
+    <h2>Metas Cadastradas</h2>
     <span class="contador" id="contador">0 metas</span>
   </div>
   <div id="listaMetas"></div>
